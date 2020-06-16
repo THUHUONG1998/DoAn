@@ -20,8 +20,20 @@ class UsersController extends Controller
      */
     public function index(Request $request)
     {
+        $key = $request->get('key');
+        if($key)
+        {
+            $data = User::where('id','like','%'.$key.'%')
+            ->where('username','like','%'.$key.'%')
+            ->orwhere('hovaten','like','%'.$key.'%')
+            ->orwhere('email','like','%'.$key.'%')->paginate(5);
+          //  $data->appends(['key'=>$key]);
+        }
+        else
+        {
+            $data = User::orderBy('id','ASC')->paginate(5);
+        }
         // code phan trang
-        $data = User::orderBy('id','ASC')->paginate(5);
         return view('users.index',compact('data'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }

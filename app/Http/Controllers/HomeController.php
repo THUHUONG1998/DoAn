@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\User;
-use Hash;
+use App\ResetPassword;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 class HomeController extends Controller
 {
     /**
@@ -68,5 +70,7 @@ class HomeController extends Controller
         return redirect()->route('users.show', Auth::user()->id)
                         ->with('success','User updated successfully');
     }
+
+    
    
 }

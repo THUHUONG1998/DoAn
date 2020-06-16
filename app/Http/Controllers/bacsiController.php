@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\bacsi;
-use DB;
+use App\chuyenkhoa;
+use Benhvien as GlobalBenhvien;
+use Illuminate\Support\Facades\DB;
 
 class bacsiController extends Controller
 {
@@ -20,6 +22,15 @@ class bacsiController extends Controller
         $benhvien = DB::table('benhvien')->get();
         $chuyenkhoa = DB::table('chuyenkhoa')->get();
         return view('bacsi.create',compact('bacsi','benhvien','chuyenkhoa'));
+    }
+
+    public function showChuyenKhoainBenhVien(Request $request)
+    {
+        if ($request->ajax()) {
+			$chuyenkhoa = chuyenkhoa::where('id_benhvien', $request->id_benhvien)->select('id', 'tenchuyenkhoa')->get();
+
+			return response()->json($chuyenkhoa);
+		}
     }
     public function store(Request $request)
     {

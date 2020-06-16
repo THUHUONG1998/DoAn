@@ -30,7 +30,17 @@
 </div>
 @endif
 
-
+<form action="{{route('users.index')}}" method="GET" role="search">
+                  {{ csrf_field() }}
+                  <div class="input-group">
+                      <input type="text" class="form-control" name="key"
+                          placeholder="Search users" id="key" value=""> <span class="input-group-btn">
+                          <button class="btn btn-navbar"type="submit" class="btn btn-default">
+                              <span class="fa fa-search"></span>
+                          </button>
+                      </span>
+                  </div>
+              </form>                   
 <table class="table table-bordered">
  <tr>
    <th>No</th>

@@ -18,6 +18,9 @@ Route::get('/', function () {
 });
 
 Route::get('/profile', 'HomeController@userProFile');
+// Route::get('/request-password', 'HomeController@getViewRequest')->name('request_password');
+// Route::post('/request-password', 'HomeController@getForgotPassword')->name('request_mail_password');
+
 Auth::routes();
 
 
@@ -36,6 +39,7 @@ Route::group(['prefix'=>'admin'], function() {
         Route::resource('khunggio','khunggioController');
         Route::resource('benhnhan','benhnhanController');
         Route::resource('sms','smsController');
+        Route::post('showchuyenkhoa', 'bacsiController@showChuyenKhoainBenhVien')->name('show-chuyenkhoa');
     });
     
 });

@@ -58,6 +58,7 @@
                   <div class="form-group">
                     <label for="exampleInputEmail1">Bệnh viện</label>
                     <select name="id_benhvien" class="browser-default custom-select">
+                      <option value="">--Chọn bệnh viện--</option>
                       @foreach($benhvien as $value)
                         <option value="{{$value->id}}" >{{$value->tenbenhvien}}</option>  
                       @endforeach
@@ -67,9 +68,7 @@
                 <div class="form-group">
                     <label for="exampleInputEmail1">Chuyên Khoa</label>
                     <select name="id_chuyenkhoa" class="browser-default custom-select">
-                      @foreach($chuyenkhoa as $ck)
-                        <option value="{{$ck->id}}" >{{$ck->tenchuyenkhoa}}</option>  
-                      @endforeach
+                      <option value="">--Chọn chuyên khoa--</option>
                     </select>
                   </div>
                 <div class="card-footer">
@@ -85,3 +84,5 @@
     </section>
 
 @endsection
+
+
